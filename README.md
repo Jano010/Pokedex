@@ -2,7 +2,7 @@
 
 A simple pokedex app made with flutter.
 
-## knowledge used
+## Knowledge used
 
 In this app the following knowledge  where used:
 
