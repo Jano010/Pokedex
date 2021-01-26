@@ -1,34 +1,22 @@
+// TextField Decoration
 import 'package:flutter/material.dart';
-import 'colors_constants.dart';
+import 'package:pokedex/core/constants/colors_constants.dart';
 
-const InputDecoration kTextFieldsDecoration = InputDecoration(
-  hintText: 'Enter your Email',
-  hintStyle: TextStyle(
-    color: kSecondaryTextColor,
-  ),
+// Decoration for text inputs like password and email
+const kTextFieldDecoration = InputDecoration(
+  hintText: "Label text",
+  filled: true,
+  fillColor: kMainColor,
+  contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
   enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: kThirdColor, width: 1.0),
+    borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
   focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: kForthColor, width: 2.0),
+    borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
 );
-
-const LinearGradient kBackgroundColorGradient = LinearGradient(colors: [
-  kFirstBackgroundColor,
-  kSecondBackgroundColor,
-  kThirdBackgroundColor,
-  kForthBackgroundColor,
-]);
-
-const LinearGradient kMainColorgradient = LinearGradient(colors: [
-  kPrimaryColor,
-  kSecondaryColor,
-  kThirdColor,
-  kForthColor,
-]);
