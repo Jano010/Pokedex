@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:loading_animations/loading_animations.dart';
-import 'package:pokedex/core/constants/colors_constants.dart';
-import 'package:pokedex/ui/screens/animation_screen.dart';
-import 'package:pokedex/ui/screens/lists_screen.dart';
-import 'package:pokedex/ui/screens/logIn_screen.dart';
-import 'package:pokedex/ui/screens/pokemon_screen.dart';
-import 'package:pokedex/ui/screens/welcome_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:pokedex/core/constants/colors_constants.dart';
+import 'package:pokedex/core/constants/translations_constants.dart';
+import 'package:pokedex/ui/screen/animation/animation_screen.dart';
+import 'package:pokedex/ui/screen/authentication/authentication_screen.dart';
+import 'package:pokedex/ui/screen/welcome/welcome_screen.dart';
+import 'package:pokedex/core/utils/messages.dart';
+import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,37 +15,47 @@ void main() {
 }
 
 class PokedexApp extends StatelessWidget {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  final Future<FirebaseApp> _init = Firebase.initializeApp();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: _initialization,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            // TODO: Do something when there was an error in firebase
-          }
-
-          if (snapshot.connectionState == ConnectionState.done) {
-            return MaterialApp(
-              initialRoute: AnimationScreen.route,
-              routes: {
-                AnimationScreen.route: (context) => AnimationScreen(),
-                WelcomeScreen.route: (context) => WelcomeScreen(),
-                LogInScreen.route: (context) => LogInScreen(),
-                ListsScreen.route: (context) => ListsScreen(),
-                PokemonScreen.route: (context) => PokemonScreen(),
-              },
-            );
-          }
-
-          return Center(
-            child: Container(
-              child: LoadingFlipping.circle(
-                borderColor: kPrimaryColor,
-              ),
-            ),
+      future: _init,
+      builder: (context, snapshot) {
+        // Showing a snackbar on an error
+        if (snapshot.hasError) {
+          Get.snackbar(kErrorMsg.tr, kGenericErrorMsg.tr);
+          return Scaffold(
+            backgroundColor: kForthColor,
           );
-        });
+        }
+
+        // When finished if succesfull, then open app
+        if (snapshot.connectionState == ConnectionState.done) {
+          return GetMaterialApp(
+            // Internasionalization
+            translations: Messages(),
+            locale: Locale('en', 'US'),
+            fallbackLocale: Locale('en', 'US'),
+            // Navigation
+            initialRoute: AnimationScreen.route,
+            getPages: [
+              GetPage(
+                  name: AnimationScreen.route, page: () => AnimationScreen()),
+              GetPage(name: WelcomeScreen.route, page: () => WelcomeScreen()),
+              GetPage(
+                  name: AuthenticationScreen.route,
+                  page: () => AuthenticationScreen(),
+                  transition: Transition.rightToLeftWithFade),
+            ],
+          );
+        }
+
+        // Loading Screen
+        return Scaffold(
+          backgroundColor: kForthColor,
+        );
+      },
+    );
   }
 }

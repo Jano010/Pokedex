@@ -1,1 +1,2 @@
-const String kpokeballLogo = 'assets/pokeball.svg';
+const kMainLogo = "assets/logo.svg";
+const kCornerLogo = "assets/logo_corner.svg";
