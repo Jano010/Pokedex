@@ -9,6 +9,10 @@ const kEnterPasswordMsg = 'passwordMsg';
 const kEnterEmailMsg = "emailMsg";
 const kLoginString = 'login';
 const kRegisterString = 'register';
+const kWeakPasswordMsg = 'weakPssword';
+const kEmailUsedMsg = 'emailused';
+const kUserNotFoundMsg = 'userNotFound';
+const kWrongPasswordMsg = 'wrongPassword';
 
 // Errors
 const kErrorMsg = 'error';

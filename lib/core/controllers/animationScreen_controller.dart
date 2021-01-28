@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:pokedex/ui/screen/main/main_screen.dart';
 import 'package:pokedex/ui/screen/welcome/welcome_screen.dart';
 
 class AnimationScreenController extends GetxController
@@ -23,7 +25,10 @@ class AnimationScreenController extends GetxController
 
     _animation.addStatusListener((AnimationStatus status) {
       if (status == AnimationStatus.completed) {
-        navigator.pushReplacementNamed(WelcomeScreen.route);
+        User _user = FirebaseAuth.instance.currentUser;
+        _user == null
+            ? navigator.pushReplacementNamed(WelcomeScreen.route)
+            : navigator.pushReplacementNamed(MainScreen.route);
       }
     });
 

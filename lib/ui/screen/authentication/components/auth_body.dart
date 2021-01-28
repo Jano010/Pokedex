@@ -3,13 +3,20 @@ import 'package:pokedex/core/constants/assets_constants.dart';
 import 'package:pokedex/core/constants/colors_constants.dart';
 import 'package:pokedex/core/constants/styles_constants.dart';
 import 'package:pokedex/core/constants/translations_constants.dart';
+import 'package:pokedex/core/controllers/authenticationScreen_controller.dart';
 import 'package:pokedex/ui/screen/welcome/components/welcome_button.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class AuthenticationBody extends StatelessWidget {
-  const AuthenticationBody({@required this.newUser});
+  AuthenticationBody({@required this.newUser});
+
+  final AuthenticationScreenController _controller = Get.find();
   final bool newUser;
+
+  String userEmail = '';
+  String userPassword = '';
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +50,9 @@ class AuthenticationBody extends StatelessWidget {
                 kTextFieldDecoration.copyWith(hintText: kEnterEmailMsg.tr),
             keyboardType: TextInputType.emailAddress,
             textAlign: TextAlign.center,
+            onChanged: (newValue) {
+              userEmail = newValue;
+            },
           ),
           SizedBox(height: 8.0),
           TextField(
@@ -51,13 +61,19 @@ class AuthenticationBody extends StatelessWidget {
               hintText: kEnterPasswordMsg.tr,
             ),
             textAlign: TextAlign.center,
+            onChanged: (newValue) {
+              userPassword = newValue;
+            },
           ),
           SizedBox(
             height: 16.0,
           ),
           WelcomeButton(
             text: newUser ? kRegisterString.tr : kLoginString.tr,
-            onPressedCallback: () {},
+            onPressedCallback: () => _controller.autheticateUser(
+                newUserCallback: newUser,
+                userEmailCallback: userEmail,
+                userPasswordCallback: userPassword),
           ),
         ],
       ),
