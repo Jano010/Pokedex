@@ -12,9 +12,13 @@ class Messages extends Translations {
           kEnterPasswordMsg: "Please enter your password",
           kLoginString: "Log In",
           kRegisterString: "Sign In",
+          kWeakPasswordMsg: 'The password is to weak, try another password',
+          kEmailUsedMsg: "The email is already in use, please try another one",
+          kUserNotFoundMsg: 'The user was not found, please try again',
+          kWrongPasswordMsg: 'Wrong password',
           // Erros
           kErrorMsg: "Error",
-          kGenericErrorMsg: "There has ben an error",
+          kGenericErrorMsg: "Something went wrong",
         }
       };
 }
