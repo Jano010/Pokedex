@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/core/constants/assets_constants.dart';
 import 'package:pokedex/core/constants/colors_constants.dart';
 import 'package:pokedex/core/controllers/mainScreen_controller.dart';
+import 'package:pokedex/ui/screen/list/list_screen.dart';
 import 'package:pokedex/ui/screen/main/components/main_card.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 import 'package:get/get.dart';
@@ -63,7 +64,7 @@ class MainBody extends StatelessWidget {
                           child: MenuCard(
                             text: 'Pokedex',
                             backgroundColor: kGrassTypeColor,
-                            onTap: () {},
+                            onTap: () => navigator.pushNamed(ListScreen.route),
                           ),
                         ),
                         Flexible(
