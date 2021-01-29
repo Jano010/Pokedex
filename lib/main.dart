@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:pokedex/core/bindings/animationScreen_binding.dart';
 import 'package:pokedex/core/bindings/authenticationScreen_binding.dart';
+import 'package:pokedex/core/bindings/listScreen_bindings.dart';
 import 'package:pokedex/core/bindings/mainScreen_bindings.dart';
 import 'package:pokedex/core/constants/colors_constants.dart';
 import 'package:pokedex/core/constants/translations_constants.dart';
 import 'package:pokedex/ui/screen/animation/animation_screen.dart';
 import 'package:pokedex/ui/screen/authentication/authentication_screen.dart';
+import 'package:pokedex/ui/screen/list/list_screen.dart';
 import 'package:pokedex/ui/screen/main/main_screen.dart';
 import 'package:pokedex/ui/screen/welcome/welcome_screen.dart';
 import 'package:pokedex/core/utils/messages.dart';
@@ -58,6 +60,11 @@ class PokedexApp extends StatelessWidget {
                   name: MainScreen.route,
                   page: () => MainScreen(),
                   binding: MainScreenBindings(),
+                  transition: Transition.rightToLeftWithFade),
+              GetPage(
+                  name: ListScreen.route,
+                  page: () => ListScreen(),
+                  binding: ListScreenBindings(),
                   transition: Transition.rightToLeftWithFade),
             ],
           );

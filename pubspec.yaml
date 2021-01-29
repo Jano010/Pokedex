@@ -33,6 +33,9 @@ dependencies:
   # Loading animation
   loading_animations: "^2.1.0"
 
+  # Http request package
+  http: ^0.12.2
+
 
   # Firebase packages
   firebase_core: ^0.7.0
