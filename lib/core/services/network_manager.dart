@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:http/http.dart' as http;
+import 'package:pokedex/core/constants/api_constants.dart';
+import 'package:pokedex/core/models/pokemon_models.dart';
 import 'package:pokedex/core/models/resources_models.dart';
 import 'dart:io';
 
@@ -39,9 +41,9 @@ class NetworkManager extends GetxController {
     }
   }
 
-  void printResponse({@required int code, @required String body}) {
-    print('Http Response Code: $code');
-    print('Http Response Body: $body');
+  void printResponse({@required http.Response response}) {
+    print('Http Response Code: ${response.statusCode}');
+    print('Http Response Body: ${response.body}');
   }
 
   Future<ApiResourceList> callResourcesListService(
@@ -50,7 +52,7 @@ class NetworkManager extends GetxController {
 
     final http.Response response =
         await http.get(Uri.encodeFull(url), headers: baseHeaders);
-    printResponse(code: response.statusCode, body: response.body);
+    printResponse(response: response);
 
     if (response.statusCode == 200) {
       _list = ApiResourceList.fromJson(response.body);
@@ -59,5 +61,21 @@ class NetworkManager extends GetxController {
     }
 
     return _list;
+  }
+
+  Future<Pokemon> callPokemonServices({@required String pokemon}) async {
+    if (pokemon == '') {
+      return null;
+    }
+
+    final http.Response response =
+        await http.get(Uri.encodeFull(pokemon), headers: baseHeaders);
+    printResponse(response: response);
+
+    if (response.statusCode == 200) {
+      return Pokemon.fromJson(response.body);
+    } else {
+      return null;
+    }
   }
 }

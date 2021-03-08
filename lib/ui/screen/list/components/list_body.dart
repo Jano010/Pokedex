@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:pokedex/core/constants/api_constants.dart';
 import 'package:pokedex/core/constants/colors_constants.dart';
+import 'package:pokedex/core/constants/translations_constants.dart';
 import 'package:pokedex/core/controllers/listScreen_controller.dart';
 import 'package:pokedex/ui/screen/list/components/list_tile.dart';
 
@@ -14,8 +15,8 @@ class _GeneralListBodyState extends State<GeneralListBody> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ListScreenController>(
-      initState: (_) =>
-          ListScreenController.to.getResourceList(url: kApiUrl + 'pokemon'),
+      initState: (_) => ListScreenController.to
+          .getResourceList(url: kApiUrl + kPokemonEndpoint),
       builder: (controller) => controller.resourcesList.isEmpty
           ? Center(child: CircularProgressIndicator())
           : ListView.separated(

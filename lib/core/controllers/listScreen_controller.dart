@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:pokedex/core/constants/translations_constants.dart';
 import 'package:pokedex/core/models/resources_models.dart';
 import 'package:pokedex/core/services/network_manager.dart';
+import 'package:pokedex/ui/components/main_snackbar.dart';
+import 'package:pokedex/ui/screen/pokemon/pokemon_screen.dart';
 
 class ListScreenController extends GetxController {
   NetworkManager _networkManager;
@@ -21,9 +24,17 @@ class ListScreenController extends GetxController {
   }
 
   void getResourceList({@required String url}) async {
-    _resources = await _networkManager.callResourcesListService(url: url);
-    resourcesList.addAll(_resources.results);
-    update();
+    print('Making Resource Call');
+    if (url != null) {
+      if (await _networkManager.thereIsInternetConnection()) {
+        _resources = await _networkManager.callResourcesListService(url: url);
+        resourcesList.addAll(_resources.results);
+        update();
+      } else {
+        MainSnackbar.show(
+            title: kGenericErrorMsg, msg: 'There is no internet connection');
+      }
+    }
   }
 
   void paginationHandler(int index) {
@@ -36,7 +47,6 @@ class ListScreenController extends GetxController {
   }
 
   void onPokemonTap({@required ApiResource pokemon}) {
-    // navigator.pushNamed();
-    print('${pokemon.name}');
+    navigator.pushNamed(PokemonScreen.route, arguments: pokemon.url);
   }
 }
