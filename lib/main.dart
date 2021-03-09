@@ -5,12 +5,14 @@ import 'package:pokedex/core/bindings/animationScreen_binding.dart';
 import 'package:pokedex/core/bindings/authenticationScreen_binding.dart';
 import 'package:pokedex/core/bindings/listScreen_bindings.dart';
 import 'package:pokedex/core/bindings/mainScreen_bindings.dart';
+import 'package:pokedex/core/bindings/pokemonScreen_bindings.dart';
 import 'package:pokedex/core/constants/colors_constants.dart';
 import 'package:pokedex/core/constants/translations_constants.dart';
 import 'package:pokedex/ui/screen/animation/animation_screen.dart';
 import 'package:pokedex/ui/screen/authentication/authentication_screen.dart';
 import 'package:pokedex/ui/screen/list/list_screen.dart';
 import 'package:pokedex/ui/screen/main/main_screen.dart';
+import 'package:pokedex/ui/screen/pokemon/pokemon_screen.dart';
 import 'package:pokedex/ui/screen/welcome/welcome_screen.dart';
 import 'package:pokedex/core/utils/messages.dart';
 import 'package:get/get.dart';
@@ -36,7 +38,7 @@ class PokedexApp extends StatelessWidget {
           );
         }
 
-        // When finished if succesfull, then open app
+        // When finished, if succesfull, open app
         if (snapshot.connectionState == ConnectionState.done) {
           return GetMaterialApp(
             // Internasionalization
@@ -66,6 +68,12 @@ class PokedexApp extends StatelessWidget {
                   page: () => ListScreen(),
                   binding: ListScreenBindings(),
                   transition: Transition.rightToLeftWithFade),
+              GetPage(
+                name: PokemonScreen.route,
+                page: () => PokemonScreen(),
+                binding: PokemonScreenBindings(),
+                transition: Transition.downToUp,
+              )
             ],
           );
         }

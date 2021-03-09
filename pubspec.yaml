@@ -28,14 +28,13 @@ dependencies:
   cupertino_icons: ^1.0.0
 
   # Package to draw svg files
-  websafe_svg: ^1.1.4+1
+  websafe_svg: ^1.1.4+2
 
   # Loading animation
   loading_animations: "^2.1.0"
 
   # Http request package
   http: ^0.12.2
-
 
   # Firebase packages
   firebase_core: ^0.7.0
