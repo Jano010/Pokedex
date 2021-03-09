@@ -135,8 +135,8 @@ class PokemonHeldItems {
 
     return PokemonHeldItems(
       item: ApiResource.fromMap(map['item']),
-      version_details: List<PokemonHeldItemVersion>.from(
-          map['versionDetails']?.map((x) => PokemonHeldItemVersion.fromMap(x))),
+      version_details: List<PokemonHeldItemVersion>.from(map['version_details']
+          ?.map((x) => PokemonHeldItemVersion.fromMap(x))),
     );
   }
 
