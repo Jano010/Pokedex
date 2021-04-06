@@ -12,7 +12,7 @@ class AuthenticationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kForthColor,
       body: AuthenticationBody(
-        newUser: newUserCallback,
+        newUser: newUserCallback == null ? false : newUserCallback,
       ),
     );
   }

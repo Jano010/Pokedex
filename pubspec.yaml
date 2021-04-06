@@ -28,17 +28,18 @@ dependencies:
   cupertino_icons: ^1.0.0
 
   # Package to draw svg files
-  websafe_svg: ^1.1.4+2
+  flutter_svg: ^0.19.3
 
   # Loading animation
   loading_animations: "^2.1.0"
 
   # Http request package
-  http: ^0.12.2
+  http: ^0.13.1
 
   # Firebase packages
-  firebase_core: ^0.7.0
-  firebase_auth: "^0.20.0+1"
+  firebase_core: ^1.0.2
+  firebase_auth: ^1.0.1
+  cloud_firestore: ^1.0.3
 
   # Getx Architecture packages
   get: ^3.24.0

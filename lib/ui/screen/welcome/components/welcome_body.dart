@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pokedex/core/constants/assets_constants.dart';
 import 'package:pokedex/core/constants/colors_constants.dart';
 import 'package:pokedex/core/constants/translations_constants.dart';
-import 'package:pokedex/ui/screen/authentication/authentication_screen.dart';
+import 'package:pokedex/core/controllers/welcomeScreen_controller.dart';
 import 'package:pokedex/ui/screen/welcome/components/welcome_button.dart';
-import 'package:websafe_svg/websafe_svg.dart';
 import 'package:get/get.dart';
 
 class WelcomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final WelcomeScreenController _controller =
+        WelcomeScreenController.instance;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32.0),
       child: Column(
@@ -20,7 +23,7 @@ class WelcomeBody extends StatelessWidget {
             tag: 'logo',
             child: Column(
               children: [
-                WebsafeSvg.asset(kMainLogo, color: kMainColor, height: 100.0),
+                SvgPicture.asset(kMainLogo, color: kMainColor, height: 100.0),
                 SizedBox(
                   height: 16.0,
                 ),
@@ -38,14 +41,14 @@ class WelcomeBody extends StatelessWidget {
           WelcomeButton(
             text: kLoginString.tr,
             onPressedCallback: () {
-              navigator.pushNamed(AuthenticationScreen.route, arguments: false);
+              _controller.goToLogInScreen();
             },
           ),
           SizedBox(height: 8.0),
           WelcomeButton(
             text: kRegisterString.tr,
             onPressedCallback: () {
-              navigator.pushNamed(AuthenticationScreen.route, arguments: true);
+              _controller.goToSignInScreen();
             },
           ),
         ],

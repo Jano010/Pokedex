@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pokedex/core/constants/assets_constants.dart';
 import 'package:pokedex/core/constants/colors_constants.dart';
 import 'package:pokedex/core/controllers/animationScreen_controller.dart';
-import 'package:websafe_svg/websafe_svg.dart';
-import 'package:get/get.dart';
 
 class AnimationBody extends StatefulWidget {
   @override
@@ -18,7 +17,7 @@ class _AnimationBodyState extends State<AnimationBody> {
   /*==========================================================================*/
   @override
   void initState() {
-    _controller = Get.find();
+    _controller = AnimationScreenController.instance;
     super.initState();
   }
 
@@ -29,7 +28,7 @@ class _AnimationBodyState extends State<AnimationBody> {
         turns: _controller.animation,
         child: Hero(
           tag: "logo",
-          child: WebsafeSvg.asset(kMainLogo, color: kMainColor, height: 180.0),
+          child: SvgPicture.asset(kMainLogo, color: kMainColor, height: 180.0),
         ),
       ),
     );

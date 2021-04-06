@@ -7,7 +7,9 @@ class Pokemon {
   final int height;
   final int weight;
   final List<PokemonAbility> abilities;
+  // ignore: non_constant_identifier_names
   final List<PokemonHeldItems> held_items;
+  // ignore: non_constant_identifier_names
   final String location_area_encounters;
   final List<PokemonMove> moves;
   final PokemonSprites sprites;
@@ -21,7 +23,9 @@ class Pokemon {
     this.height,
     this.weight,
     this.abilities,
+    // ignore: non_constant_identifier_names
     this.held_items,
+    // ignore: non_constant_identifier_names
     this.location_area_encounters,
     this.moves,
     this.sprites,
@@ -83,11 +87,13 @@ class Pokemon {
 }
 
 class PokemonAbility {
+  // ignore: non_constant_identifier_names
   final bool is_hidden;
   final int slots;
   final ApiResource ability;
 
   PokemonAbility({
+    // ignore: non_constant_identifier_names
     this.is_hidden,
     this.slots,
     this.ability,
@@ -123,10 +129,12 @@ class PokemonAbility {
 
 class PokemonHeldItems {
   final ApiResource item;
+  // ignore: non_constant_identifier_names
   final List<PokemonHeldItemVersion> version_details;
 
   PokemonHeldItems({
     this.item,
+    // ignore: non_constant_identifier_names
     this.version_details,
   });
 
@@ -194,10 +202,12 @@ class PokemonHeldItemVersion {
 
 class PokemonMove {
   final ApiResource move;
+  // ignore: non_constant_identifier_names
   final List<PokemonMoveVersion> version_group_details;
 
   PokemonMove({
     this.move,
+    // ignore: non_constant_identifier_names
     this.version_group_details,
   });
 
@@ -230,13 +240,19 @@ class PokemonMove {
 }
 
 class PokemonMoveVersion {
+  // ignore: non_constant_identifier_names
   final ApiResource move_learn_method;
+  // ignore: non_constant_identifier_names
   final ApiResource version_group;
+  // ignore: non_constant_identifier_names
   final int level_learned_at;
 
   PokemonMoveVersion({
+    // ignore: non_constant_identifier_names
     this.move_learn_method,
+    // ignore: non_constant_identifier_names
     this.version_group,
+    // ignore: non_constant_identifier_names
     this.level_learned_at,
   });
 
@@ -269,23 +285,39 @@ class PokemonMoveVersion {
 }
 
 class PokemonSprites {
+  // ignore: non_constant_identifier_names
   final String front_default;
+  // ignore: non_constant_identifier_names
   final String front_shiny;
+  // ignore: non_constant_identifier_names
   final String front_female;
+  // ignore: non_constant_identifier_names
   final String front_shiny_female;
+  // ignore: non_constant_identifier_names
   final String back_default;
+  // ignore: non_constant_identifier_names
   final String back_shiny;
+  // ignore: non_constant_identifier_names
   final String back_female;
+  // ignore: non_constant_identifier_names
   final String back_shiny_female;
 
   PokemonSprites({
+    // ignore: non_constant_identifier_names
     this.front_default,
+    // ignore: non_constant_identifier_names
     this.front_shiny,
+    // ignore: non_constant_identifier_names
     this.front_female,
+    // ignore: non_constant_identifier_names
     this.front_shiny_female,
+    // ignore: non_constant_identifier_names
     this.back_default,
+    // ignore: non_constant_identifier_names
     this.back_shiny,
+    // ignore: non_constant_identifier_names
     this.back_female,
+    // ignore: non_constant_identifier_names
     this.back_shiny_female,
   });
 
@@ -331,10 +363,12 @@ class PokemonSprites {
 class PokemonStat {
   final ApiResource stat;
   final int effort;
+  // ignore: non_constant_identifier_names
   final int base_stat;
   PokemonStat({
     this.stat,
     this.effort,
+    // ignore: non_constant_identifier_names
     this.base_stat,
   });
 

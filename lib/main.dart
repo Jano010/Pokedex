@@ -1,20 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:pokedex/core/bindings/animationScreen_binding.dart';
-import 'package:pokedex/core/bindings/authenticationScreen_binding.dart';
-import 'package:pokedex/core/bindings/listScreen_bindings.dart';
-import 'package:pokedex/core/bindings/mainScreen_bindings.dart';
-import 'package:pokedex/core/bindings/pokemonScreen_bindings.dart';
 import 'package:pokedex/core/constants/colors_constants.dart';
 import 'package:pokedex/core/constants/translations_constants.dart';
 import 'package:pokedex/ui/screen/animation/animation_screen.dart';
 import 'package:pokedex/ui/screen/authentication/authentication_screen.dart';
-import 'package:pokedex/ui/screen/list/list_screen.dart';
-import 'package:pokedex/ui/screen/main/main_screen.dart';
+import 'package:pokedex/ui/screen/favourite_pkmn/favouritePkmn_screen.dart';
 import 'package:pokedex/ui/screen/pokemon/pokemon_screen.dart';
+import 'package:pokedex/ui/screen/search/search_screen.dart';
 import 'package:pokedex/ui/screen/welcome/welcome_screen.dart';
 import 'package:pokedex/core/utils/messages.dart';
+import 'package:pokedex/core/bindings.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -33,8 +29,10 @@ class PokedexApp extends StatelessWidget {
         // Showing a snackbar on an error
         if (snapshot.hasError) {
           Get.snackbar(kErrorMsg.tr, kGenericErrorMsg.tr);
-          return Scaffold(
-            backgroundColor: kForthColor,
+          return MaterialApp(
+            home: Scaffold(
+              backgroundColor: kForthColor,
+            ),
           );
         }
 
@@ -51,36 +49,41 @@ class PokedexApp extends StatelessWidget {
               GetPage(
                   name: AnimationScreen.route,
                   page: () => AnimationScreen(),
-                  binding: AnimationScreenbinding()),
-              GetPage(name: WelcomeScreen.route, page: () => WelcomeScreen()),
+                  binding: AnimationScreenBindings()),
+              GetPage(
+                  name: WelcomeScreen.route,
+                  page: () => WelcomeScreen(),
+                  binding: WelcomeScreenBindings()),
               GetPage(
                   name: AuthenticationScreen.route,
                   page: () => AuthenticationScreen(),
                   binding: AuthenticationScreenBindings(),
                   transition: Transition.rightToLeftWithFade),
               GetPage(
-                  name: MainScreen.route,
-                  page: () => MainScreen(),
-                  binding: MainScreenBindings(),
+                  name: FavouritePkmnScreen.route,
+                  page: () => FavouritePkmnScreen(),
+                  binding: FavouritePkmnScreenBindings(),
                   transition: Transition.rightToLeftWithFade),
               GetPage(
-                  name: ListScreen.route,
-                  page: () => ListScreen(),
-                  binding: ListScreenBindings(),
-                  transition: Transition.rightToLeftWithFade),
+                  name: SearchScreen.route,
+                  page: () => SearchScreen(),
+                  binding: SearchScreenBindings(),
+                  transition: Transition.downToUp),
               GetPage(
-                name: PokemonScreen.route,
-                page: () => PokemonScreen(),
-                binding: PokemonScreenBindings(),
-                transition: Transition.downToUp,
-              )
+                  name: PokemonScreen.route,
+                  page: () => PokemonScreen(),
+                  binding: PokemonScreenBindings(),
+                  transition: Transition.rightToLeftWithFade)
             ],
           );
         }
 
         // Loading Screen
-        return Scaffold(
-          backgroundColor: kForthColor,
+        return MaterialApp(
+          home: Scaffold(
+            backgroundColor: kForthColor,
+            body: CircularProgressIndicator(),
+          ),
         );
       },
     );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/core/constants/assets_constants.dart';
+import 'package:pokedex/core/constants/styles_constants.dart';
 import 'package:pokedex/core/utils/extensions.dart';
 
 class PokemonTypeContainer extends StatelessWidget {
-  String pokemonType;
+  final String pokemonType;
 
   PokemonTypeContainer({@required this.pokemonType});
 
@@ -16,14 +16,7 @@ class PokemonTypeContainer extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(36)),
             color: Color(0x26000000)),
-        child: Text(
-          pokemonType.capitalize(),
-          style: TextStyle(
-            fontFamily: kCircularStdFont,
-            fontSize: 16.0,
-            color: Colors.white,
-          ),
-        ),
+        child: Text(pokemonType.capitalize(), style: kSubTextStyle),
       ),
     );
   }
