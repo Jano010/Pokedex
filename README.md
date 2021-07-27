@@ -4,12 +4,13 @@ A simple pokedex app made with flutter.
 
 ## Knowledge used
 
-In this app the following knowledge  where used:
+In this app the following knowledge where used:
 
 - HTTP Package
-- GetX Package architecture
-- Firebase integration
-- Firebase Authentication
+- GetX Package State Management
+- Clean Architecture
+- Functional programming
+- Unit testing with mock package
 
 ## Resources
 
