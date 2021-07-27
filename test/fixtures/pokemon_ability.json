@@ -1,0 +1,23 @@
+{
+  "effect_entries": [
+    {
+      "effect": "effect",
+      "language": {
+        "name": "name",
+        "url": "url"
+      },
+      "short_effect": "short_effect"
+    },
+     {
+      "effect": "effect",
+      "language": {
+        "name": "name",
+        "url": "url"
+      },
+      "short_effect": "short_effect"
+    }
+  ],
+  "id": 1,
+  "is_main_series": true,
+  "name": "name"
+}

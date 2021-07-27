@@ -1,0 +1,11 @@
+{
+      "flavor_text": "Flavor Text",
+      "language": {
+        "name": "name",
+        "url": "url"
+      },
+      "version": {
+        "name": "name",
+        "url": "url"
+      }
+    }

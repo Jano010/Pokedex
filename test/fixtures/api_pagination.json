@@ -1,0 +1,11 @@
+{
+  "count": 1,
+  "next": "next",
+  "previous": "previous",
+  "results": [
+    {
+      "name": "name",
+      "url": "url"
+    }
+  ]
+}
